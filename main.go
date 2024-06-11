@@ -38,8 +38,7 @@ func main() {
 
 	go func() {
 		c := make(chan os.Signal, 1)
-		signal.Notify(c, syscall.SIGINT, syscall.SIGTERM)
-		errs <- fmt.Errorf("%s", <-c)
+		signal.Notify(c, syscall.SIGINT, syscall.SIGTERM) errs <- fmt.Errorf("%s", <-c)
 	}()
 
 	endpoints := server.MakeEndpointsAuth(srv)
